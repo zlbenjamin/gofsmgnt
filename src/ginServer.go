@@ -23,4 +23,5 @@ func StartServer() {
 // Configure router
 func configRouter(router *gin.Engine) {
 	router.POST("/api/fs/init", InitFs)
+	router.GET("/api/fs/query", QueryFiles)
 }

@@ -6,6 +6,7 @@ Which is used for local file management.
 
 ## API
 POST /api/fs/init?dir=?  
+GET  /api/fs/query?kw=?  
 
 ## History
 ### 20240520
