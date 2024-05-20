@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"zlbenjamin/gofsmgnt/src"
+)
 
-// 入口
+// the main()
 func main() {
-	fmt.Println("文件管理系统")
+	src.StartServer()
+	fmt.Println("123")
 }
