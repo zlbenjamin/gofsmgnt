@@ -1,2 +1,16 @@
-本地文件管理
-Golang 开发  
+# gofsmgnt
+
+## Overview
+Golang based filesystem management.  
+Which is used for local file management.  
+
+## API
+TODO  
+
+## History
+### 20240520
+Initial commit  
+
+## Limit
+TODO  
+
