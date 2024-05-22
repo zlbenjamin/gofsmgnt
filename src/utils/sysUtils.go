@@ -2,7 +2,11 @@ package utils
 
 import (
 	"encoding/json"
+	"fmt"
+	"reflect"
 	"runtime"
+
+	"github.com/shirou/gopsutil/disk"
 )
 
 // Memory infomation
@@ -77,4 +81,47 @@ func GetSystemInfo() (ret SystemInfo) {
 	ret.NumGoroutine = runtime.NumGoroutine()
 
 	return
+}
+
+// Disk info
+func GetDiskInfo(dir string) {
+	/*
+		diskInfo, err := os.Stat(dir)
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		fmt.Println(diskInfo)
+		fmt.Println(diskInfo.Sys())
+		fmt.Println(reflect.TypeOf(diskInfo.Sys()))
+
+		fmt.Println(diskInfo.Sys().(*syscall.Win32FileAttributeData))
+		fmt.Println(diskInfo.Sys().(*syscall.Win32FileAttributeData).FileAttributes)
+	*/
+
+	// github.com/shirou/gopsutil/disk
+	fmt.Println("using github.com/shirou/gopsutil/disk")
+	parts, err := disk.Partitions(true)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(parts)
+	fmt.Println(reflect.TypeOf(parts))
+
+	for _, part := range parts {
+		usage, err := disk.Usage((part.Mountpoint))
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+
+		fmt.Printf("Part: %s\n", part.Device)
+		fmt.Printf("Total: %d bytes\n", usage.Total)
+		fmt.Printf("Free: %d bytes\n", usage.Free)
+		fmt.Printf("Usedd: %d bytes\n", usage.Used)
+		fmt.Println()
+	}
+
 }
