@@ -108,9 +108,15 @@ func GetDiskInfo(dir string) {
 	}
 
 	fmt.Println(parts)
-	fmt.Println(reflect.TypeOf(parts))
+	fmt.Println("type=", reflect.TypeOf(parts), "size=", len(parts))
 
 	for _, part := range parts {
+		// don't use Yoda conditions (ST1017)
+		if runtime.GOOS == "linux" && part.Mountpoint != "/" {
+			// Ignoring
+			continue
+		}
+
 		usage, err := disk.Usage((part.Mountpoint))
 		if err != nil {
 			fmt.Println(err)
