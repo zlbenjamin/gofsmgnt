@@ -21,7 +21,7 @@ type MemInfo struct {
 	NumGC uint32 `json:"numGc"`
 }
 
-// Method: String()
+// MemInfo: String()
 func (m MemInfo) String() string {
 	bts, err := json.Marshal(m)
 	if err == nil {
@@ -43,6 +43,38 @@ func RuntimeMem() (ret MemInfo) {
 	ret.HeapAlloc = rm.HeapAlloc
 	ret.HeapSys = rm.HeapSys
 	ret.NumGC = rm.NumGC
+
+	return
+}
+
+// System information
+type SystemInfo struct {
+	// sys architecture
+	Arch string `json:"arch"`
+	// operation system
+	OS string `json:"os"`
+	// The number of logical CPUs usable by the current process
+	NumCPU int `json:"numCpu"`
+	// The number of goroutines that currently exist
+	NumGoroutine int `json:"numGoroutine"`
+}
+
+// SystemInfo: String()
+func (m SystemInfo) String() string {
+	bts, err := json.Marshal(m)
+	if err == nil {
+		return string(bts)
+	}
+
+	return ""
+}
+
+// Get system information
+func GetSystemInfo() (ret SystemInfo) {
+	ret.Arch = runtime.GOARCH
+	ret.OS = runtime.GOOS
+	ret.NumCPU = runtime.NumCPU()
+	ret.NumGoroutine = runtime.NumGoroutine()
 
 	return
 }
