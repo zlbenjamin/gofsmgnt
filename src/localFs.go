@@ -16,7 +16,7 @@ import (
 
 const dirMaxLenth = 248
 
-const filesMaxSize = 1_000
+const filesMaxSize = 10_000
 
 // Current dir
 var gvdir string
