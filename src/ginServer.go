@@ -41,4 +41,5 @@ func configRouter(router *gin.Engine) {
 	router.GET("/api/fs/query", QueryFiles)
 
 	router.GET("/api/sys/meminfo", SysMemInfo)
+	router.GET("/api/sys/info", SysInfo)
 }
