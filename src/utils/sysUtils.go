@@ -4,12 +4,18 @@ import "runtime"
 
 // Memory infomation
 type MemInfo struct {
-	Alloc      uint64
-	TotalAlloc uint64
-	Sys        uint64
-	HeapAlloc  uint64
-	HeapSys    uint64
-	NumGC      uint32
+	// Allocated but not released
+	Alloc uint64 `json:"alloc"`
+	// Total allocated since started
+	TotalAlloc uint64 `json:"totalAlloc"`
+	// Total allocated from OS
+	Sys uint64 `json:"sys"`
+	// Allocated for heap but not released
+	HeapAlloc uint64 `json:"heapAlloc"`
+	// Heap memory
+	HeapSys uint64 `json:"heapSys"`
+	// Times of GC
+	NumGC uint32 `json:"numGc"`
 }
 
 // Runtime memory info

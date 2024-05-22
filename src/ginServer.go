@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"zlbenjamin/gofsmgnt/src/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -30,6 +31,7 @@ func StartServer() {
 	// or
 	addr := fmt.Sprintf("localhost:%d", gport)
 	log.Println("Start server: ", addr)
+	log.Println("Memory: ", utils.RuntimeMem())
 	router.Run(addr)
 }
 
