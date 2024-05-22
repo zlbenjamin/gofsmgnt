@@ -1,6 +1,9 @@
 package utils
 
-import "runtime"
+import (
+	"encoding/json"
+	"runtime"
+)
 
 // Memory infomation
 type MemInfo struct {
@@ -16,6 +19,16 @@ type MemInfo struct {
 	HeapSys uint64 `json:"heapSys"`
 	// Times of GC
 	NumGC uint32 `json:"numGc"`
+}
+
+// Method: String()
+func (m MemInfo) String() string {
+	bts, err := json.Marshal(m)
+	if err == nil {
+		return string(bts)
+	}
+
+	return ""
 }
 
 // Runtime memory info
