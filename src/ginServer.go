@@ -29,7 +29,9 @@ func StartServer() {
 
 	// router.Run()
 	// or
-	addr := fmt.Sprintf("localhost:%d", gport)
+	// addr := fmt.Sprintf("localhost:%d", gport) // no: in container
+	// Listen and serve on 0.0.0.0:gport
+	addr := fmt.Sprintf(":%d", gport) // yes
 	log.Println("Start server: ", addr)
 	log.Println("Memory: ", utils.RuntimeMem())
 	router.Run(addr)
