@@ -1,8 +1,8 @@
-package src
+package internal
 
 import (
 	"net/http"
-	"zlbenjamin/gofsmgnt/src/utils"
+	"zlbenjamin/gofsmgnt/internal/utils"
 
 	"github.com/gin-gonic/gin"
 )

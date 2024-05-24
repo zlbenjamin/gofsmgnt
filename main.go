@@ -2,13 +2,15 @@ package main
 
 import (
 	"log"
-	"zlbenjamin/gofsmgnt/src"
-	"zlbenjamin/gofsmgnt/src/utils"
+	internal "zlbenjamin/gofsmgnt/internal"
+	"zlbenjamin/gofsmgnt/internal/utils"
 )
 
 // the main()
 func main() {
 	log.Println("System info: ", utils.GetSystemInfo())
 
-	src.StartServer()
+	utils.GetDiskInfo("c:")
+
+	internal.StartServer()
 }

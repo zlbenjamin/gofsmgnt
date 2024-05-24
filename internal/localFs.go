@@ -1,4 +1,4 @@
-package src
+package internal
 
 import (
 	"io/fs"
@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 	"unicode/utf8"
-	"zlbenjamin/gofsmgnt/src/utils"
+	"zlbenjamin/gofsmgnt/internal/utils"
 
 	"github.com/gin-gonic/gin"
 )

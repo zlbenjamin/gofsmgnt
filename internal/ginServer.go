@@ -1,11 +1,11 @@
-package src
+package internal
 
 import (
 	"fmt"
 	"io"
 	"log"
 	"os"
-	"zlbenjamin/gofsmgnt/src/utils"
+	"zlbenjamin/gofsmgnt/internal/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,7 +34,7 @@ func StartServer() {
 	addr := fmt.Sprintf(":%d", gport) // yes
 	log.Println("Start server: ", addr)
 	log.Println("Memory: ", utils.RuntimeMem())
-	router.Run(addr)
+	router.Run("0.0.0.0:40000")
 }
 
 // Configure router
